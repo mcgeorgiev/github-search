@@ -36,14 +36,14 @@ class App extends Component {
     return (
       <div>
         <h1>{this.state.selectedUser.login}</h1>
-        <UserRepositories user={this.state.selectedUser}/>
-
+        <UserRepositories user={this.state.selectedUser} />
         <SearchBar />
         <UserList
           onUserSelect={selectedUser => {
             this.setState({selectedUser})
           }}
-          users={this.state.users} />
+          users={this.state.users}
+          selectedUser={this.state.selectedUser}/>
       </div>
     );
   }

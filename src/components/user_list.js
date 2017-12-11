@@ -11,11 +11,12 @@ const UserList = (props) => {
         onUserSelect={props.onUserSelect}/>
     );
   });
-
   return (
-    <ul>
-      {userItems}
-    </ul>
+    <div>
+      <ul>
+        {userItems}
+      </ul>
+    </div>
   );
 };
 

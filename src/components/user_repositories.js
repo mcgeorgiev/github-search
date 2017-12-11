@@ -5,7 +5,6 @@ class UserRepositories extends Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
       repos_url: props.user.repos_url,
       repos: null
@@ -19,8 +18,13 @@ class UserRepositories extends Component {
       .then(response => this.setState({repos: response}));
   }
 
+  componentWillReceiveProps(newProps) {
+      this.setState({repos_url: newProps.user.repos_url});
+      this.repoSearch();
+  }
+
   render() {
-    console.log(this.state.repos_url);
+    console.log(this.state);
     if(!this.state.repos)
       return (
         <div>Loading</div>
