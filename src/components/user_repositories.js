@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Repo from './repo';
 
 class UserRepositories extends Component {
 
@@ -19,23 +20,27 @@ class UserRepositories extends Component {
   }
 
   render() {
+    console.log(this.state.repos_url);
     if(!this.state.repos)
       return (
         <div>Loading</div>
       );
-    console.log(this.state.repos[0]);
+    const repo_list = this.state.repos.map((repo) => {
+      return (
+        <Repo
+          repo={repo}
+          key={repo.id}/>
+      );
+    });
+
     return (
         <ul>
-          A list of repositories
+          {repo_list}
         </ul>
     );
   }
 }
 
-
-  // const userItems = props.users.items.map((user) => {
-  //   return <UserListItem key={user.login} user={user}/>
-  // });
 
 
 export default UserRepositories;

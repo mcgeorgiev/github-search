@@ -4,23 +4,9 @@ import ReactDOM from 'react-dom';
 import SearchBar from './components/search_bar';
 import UserList from './components/user_list';
 import UserRepositories from './components/user_repositories';
-// need to handle errors
 
 const url = 'https://api.github.com/search/users';
-const data = {q: 'mcgeorgiev'};
-
-// fetch(`${url}?q=${data.q}`)
-// .then(d => d.json())
-// .then(d => {
-//   console.log(d)
-// });
-
-// fetch('https://api.github.com/users/mcgeorgiev/repos')
-//   .then(d => d.json())
-//   .then(d => {
-//     console.log(d)
-//   })
-
+const data = {q: 'dogs'};
 
 
 class App extends Component {
@@ -49,9 +35,15 @@ class App extends Component {
     }
     return (
       <div>
-        <SearchBar />
-        <UserList users={this.state.users} />
+        <h1>{this.state.selectedUser.login}</h1>
         <UserRepositories user={this.state.selectedUser}/>
+
+        <SearchBar />
+        <UserList
+          onUserSelect={selectedUser => {
+            this.setState({selectedUser})
+          }}
+          users={this.state.users} />
       </div>
     );
   }
